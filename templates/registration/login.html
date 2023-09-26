@@ -1,18 +1,28 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block content %}
-    <h1>Login</h1>
-    <hr>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Логин</title>
+</head>
 
-    {% if form.errors %}
-        <p>{{ form.errors.error }}</p>
-    {% endif %}
+    <body>
+        <main>
+            <div class="login-form-container">
+            <h1 class="form-title">Войти</h1>
+                <div>
+                {% if form.errors %}
+                        <p>{{ form.errors.error }}</p>
+                    {% endif %}
 
-    <form action="{% url 'login' %}" method="post">
-    {{ form }}
-    {% csrf_token %}
-    <button type="submit" class="btn btn-success">Войти</button>
-    </form>
-
-    <a href="{% url 'password_reset' %}">Forgot password?</a>
-{% endblock %}
+                    <form action="{% url 'login' %}" method="post">
+                    {{ form }}
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-success">Войти</button>
+                    </form>
+                    <a href="{% url 'password_reset' %}">Forgot password?</a>
+                </div>
+            </div>
+        </main>

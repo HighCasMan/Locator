@@ -14,3 +14,22 @@
     font-weight: normal;
     src: local('SF Compact Display Medium'), url('sf-compact-display-medium-5864711817c30.woff') format('woff');
     }
+input {
+    height: 45px;
+    width: 100%;
+    font-size: 14px;
+    line-height: 16px;
+    border: 2px solid #E9F2FF;
+    border-radius: 5px;
+}
+.form-title {
+    color: #30507D;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 23px;
+}
+.register-form-container {
+    width: 1440px;
+    height: 1024px;
+    background: #FFF;
+}
