@@ -7,22 +7,19 @@
     <link rel="stylesheet" href="style.css">
     <title>Логин</title>
 </head>
-
     <body>
-        <main>
-            <div class="login-form-container">
-            <h1 class="form-title">Войти</h1>
-                <div>
+        <div class="login-form-container">
+            <div class="form-title">Войти</div>
+            <div class="form-title">
                 {% if form.errors %}
                         <p>{{ form.errors.error }}</p>
                     {% endif %}
 
-                    <form action="{% url 'login' %}" method="post">
-                    {{ form }}
+                    <form action="{% url 'login' %}" method="post" class="fs-title">
+                        {{ form }}
                     {% csrf_token %}
-                    <button type="submit" class="btn btn-success">Войти</button>
+                    <button type="submit" class="btn btn-success">Join</button>
                     </form>
                     <a href="{% url 'password_reset' %}">Forgot password?</a>
-                </div>
             </div>
-        </main>
+        </div>

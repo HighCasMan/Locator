@@ -1,0 +1,42 @@
+.fs-title {
+    font-size: 15px;
+    text-transform: uppercase;
+    color: #2C3E50;
+    margin-bottom: 10px;
+}
+.input {
+    height: 45px;
+    width: 100%;
+    font-size: 14px;
+    line-height: 16px;
+    border: 2px solid #E9F2FF;
+    border-radius: 5px;
+}
+.form-title {
+    position: absolute; /* Абсолютное позиционирование */
+    margin-left: 30%
+}
+.register-form-container {
+    width: 1440px;
+    height: 1024px;
+    background: #FFF;
+}
+.login-form-container {
+    position: absolute; /* Абсолютное позиционирование */
+    margin-left: 30%
+}
+.center {
+  font-size: 200px;
+}
+.page {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  background: #000;
+  width: 30%;
+  color: #fff;
+}

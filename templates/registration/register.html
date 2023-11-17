@@ -1,12 +1,19 @@
-{% extends 'base.html' %}
+{% load static %}
 
-{% block content %}
-    <h1>Register</h1>
-    <hr>
-
-    <form action="{% url 'register' %}" method="post">
-        {{ form }}
-        {% csrf_token %}
-    <button type="submit" class="btn btn-success">submit</button>
-    </form>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static style.css %}">
+    <title>Register</title>
+</head>
+<body class="page">
+    <div class="container">
+        Register
+        <form action="{% url 'register' %}" method="post">
+            {{ form }}
+            {% csrf_token %}
+            <button type="submit" class="btn btn-success">submit</button>
+        </form>
+    </div>
+</body>

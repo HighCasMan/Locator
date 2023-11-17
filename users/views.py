@@ -6,7 +6,6 @@ from users.forms import UserCreationForm
 
 
 class Register(View):
-
     template_name = 'registration/register.html'
 
     def get(self, request):
@@ -29,3 +28,8 @@ class Register(View):
             'form': form
         }
         return render(request, self.template_name, context)
+
+
+def example(request):
+    return render(request, 'registration/example.html')
+
