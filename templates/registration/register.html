@@ -4,12 +4,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="{% static style.css %}">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/custom.css' %}">
     <title>Register</title>
 </head>
-<body class="page">
-    <div class="container">
-        Register
+<body class="content">
+    <div class="parent">
         <form action="{% url 'register' %}" method="post">
             {{ form }}
             {% csrf_token %}

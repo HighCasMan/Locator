@@ -31,5 +31,4 @@ class Register(View):
 
 
 def example(request):
-    return render(request, 'registration/example.html')
-
+    return render(request, 'example.html')

@@ -1,22 +1,26 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/custom.css' %}">
     <title>Логин</title>
 </head>
     <body>
         <div class="login-form-container">
             <div class="form-title">Войти</div>
-            <div class="form-title">
+            <div class="parent">
                 {% if form.errors %}
                         <p>{{ form.errors.error }}</p>
                     {% endif %}
-
                     <form action="{% url 'login' %}" method="post" class="fs-title">
-                        {{ form }}
+                        {{ spaceless }}
+                        {{ form|linebreaks }}
+                        {{ endspaceless }}
                     {% csrf_token %}
                     <button type="submit" class="btn btn-success">Join</button>
                     </form>
