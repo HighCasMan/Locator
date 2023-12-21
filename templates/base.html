@@ -3,15 +3,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href={% static slyle.css %}>
-    <title>User authenticate</title>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/custom.css' %}">
+    <title>UA</title>
 </head>
 <body>
-<ul class="list-group">
-    <li class="list-group-item">
+
         User {{ user }}
-    </li>
+
     <li class="list-group-item">
         <a href="{% url 'home' %}">Home</a>
     </li>
