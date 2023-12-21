@@ -11,8 +11,6 @@
     {% if user.is_authenticated %}
         <a href="{% url 'logout' %}">Logout</a>
     {% else %}
-        <a href="{% url 'mainpage' %}">Mainpage</a> |
         <a href="{% url 'login' %}">Login</a> |
-        <a href="{% url 'register' %}">Register</a> |
-        <a href="{% url 'search' %}">search</a>
+        <a href="{% url 'register' %}">Register</a>
     {% endif %}
