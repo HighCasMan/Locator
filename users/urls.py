@@ -1,12 +1,11 @@
 from django.urls import path, include
-from django.views.generic import TemplateView
 
-from users.views import Register
-from .views import example
+from users import views
+from users.views import Register, Login, PasswordReset
 
 urlpatterns = [
-    path('', include('django.contrib.auth.urls')),
+    # path('', include('django.contrib.auth.urls')),
     path('register/', Register.as_view(), name='register'),
-    path('example/', example, name="example"),
-    path('mainpage/', TemplateView.as_view(), name='mainpage'),
+    path("login/", Login.as_view(), name="login"),
+    path("password_reset/", PasswordReset.as_view(), name="password_reset"),
 ]
