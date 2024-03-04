@@ -1,0 +1,24 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static '/css/search.css' %}">
+    <title>Search</title>
+</head>
+
+<body>
+<div class="search">
+    <div class="input">
+        <label for="mySearch"></label>
+        <input type="text" placeholder="Search" id="mySearch">
+        <button class="search_btn">Search</button>
+    </div>
+</div>
+<span class="clear"></span>
+</body>
+
+<script src="{% static '/js/search.js' %}"></script>
+
+</html>
