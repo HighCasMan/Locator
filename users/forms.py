@@ -26,7 +26,7 @@ class UserRegisterForm(UserCreationForm):
                                                               "placeholder": "enter password again"}))
 
     class Meta(UserCreationForm.Meta):
-        model = User
+        model = get_user_model()
         fields = ["username", "email", "password1", "password2"]
 
 
@@ -42,5 +42,9 @@ class UserAuthenticationForm(AuthenticationForm):
                                                              "placeholder": "enter password"}))
 
     class Meta(AuthenticationForm):
-        model = User
+        model = get_user_model()
         fields = ['email', 'password']
+
+
+class PasswordReset(AuthenticationForm):
+    pass

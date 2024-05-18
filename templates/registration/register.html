@@ -4,8 +4,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
-    <link rel="stylesheet" href="{% static 'bootstrap/css/custom.css' %}">
+{#    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">#}
+{#    <link rel="stylesheet" href="{% static 'bootstrap/css/custom.css' %}">#}
     <title>Register</title>
 </head>
 <body class="text-center">
@@ -16,102 +16,105 @@
         <div>{{ form.username }}</div>
         <div>{{ form.password1 }}</div>
         <div>{{ form.password2 }}</div>
-        {% csrf_token %}
-        <button type="submit" class="button">Далее</button>
+               {% csrf_token %}
+        <div><button type="submit" class="button">Далее</button></div>
     </form>
+    <div>
+        <form action="http://127.0.0.1:8000/users/login">
+            <button type="submit">login</button>
+    </form>
+</div>
 </div>
 </body>
 <style>
-    .password-input {
-    display: flex; {#  #}
-    width: 250px; {#  #}
-    max-width: 100%; {#  #}
-    flex-direction: column; {#  #}
-    align-items: center; {#  #}
-    margin: 10px 0 10px; {# отступ верх стороны низ#}
-  }
   .main-container {
-    background-color: rgba(248, 248, 248, 1); {#  #}
-    display: flex; {#  #}
-    flex-direction: column; {#  #}
-    justify-content: center; {#  #}
-    align-items: center; {#  #}
-    padding: 70px 60px 10px; {# отступ от содержимого внутри верх стороны низ#}
-      border-radius: 53px; {#  #}
-      margin: 80px 300px 50px; {# отступ верх стороны низ#}
-      flex-shrink: 0; {#  #}
+      display: flex; {#  #}
+      flex-direction: column; {#  #}
+      border: 3px solid black;
+      border-radius: 50px; {# округление углов границ #}
+      background-color: rgba(248, 248, 248, 1); {#  #}
+      justify-content: normal; {#  #}
+      align-items: center; {#  #}
+      padding: 70px 60px 10px; {# отступ от содержимого внутри верх стороны низ#}
+      margin: 5% 30% 0%; {# отступ верх стороны низ#}
+
   }
 
-  @media (max-width: 991px) {
+  @media (max-width: 900px) {
     .main-container {
-      padding: 0 20px;
+        border: 3px solid black;
+        border-radius: 40px;
+        padding: 20px;
     }
   }
-    .wrap-login100 {
-    width: 500px; {#  #}
-    border-radius: 10px; {#  #}
-    overflow: hidden; {#  #}
-    padding: 55px 55px 37px; {#  #}
-    background: #9152f8; {#  #}
-}
   .title {
-    color: #000; {#  #}
-    align-self: center; {#  #}
-    white-space: nowrap; {#  #}
-    font: 700 40px SF Compact Display, -apple-system, Roboto, Helvetica, sans-serif; {#  #}
+      color: #000; {#  #}
+      align-self: center; {#  #}
+      white-space: nowrap; {#  #}
+      font: 700 40px SF Compact Display, -apple-system, Roboto, Helvetica, sans-serif; {#  #}
   }
 
-  @media (max-width: 991px) {
+  @media (max-width: 900px) {
     .title {
       white-space: initial;
     }
   }
-
   .input-wrapper {
-    color: #cecece; {#  #}
-    white-space: nowrap; {#  #}
-    border-radius: 10px; {#  #}
-      border-color: #ffc107; {#  #}
+      display: flex;
+      flex-direction: column;
+      border: 3px solid black;
+      border-radius: 10px;
+      color: #cecece; {#  #}
+      white-space: normal; {#  #}
       outline: 0;{# убирает синюю обводку при нажатии на поле#}
-    background-color: #fff; {#  #}
-    align-self: stretch; {#  #}
-    margin-top: 24px; {#  #}
-    justify-content: center; {#  #}
-    align-items: start; {#  #}
-    padding: 17px 60px 17px 13px; {#  #}
-    font: 400 20px SF Compact Display, -apple-system, Roboto, Helvetica, sans-serif; {#  #}
+      background-color: #fff; {#  #}
+      align-self: stretch; {#  #}
+      margin: 5% 0% 0%; {#  #}
+      justify-content: normal; {#  #}
+      align-items: center; {#  #}
+      padding: 17px 60px 17px 13px; {#  #}
+      font: 400 20px
+            SF Compact Display,
+            -apple-system,
+            Roboto, Helvetica,
+            sans-serif; {#  #}
   }
-
-  @media (max-width: 991px) {
+  @media (max-width: 900px) {
     .input-wrapper {
-      white-space: initial; {#  #}
-      padding-right: 20px; {#  #}
+        white-space: normal; {#  #}
+        padding: 10px 10px 10px; {#  #}
+        font: 400 15px
+            SF Compact Display,
+            -apple-system,
+            Roboto, Helvetica,
+            sans-serif; {#  #}
     }
   }
 
   .input {
-    width: 100%; {#  #}
-    border: none; {#  #}
-    outline: none; {#  #}
+      width: 100%; {#  #}
+      border: none; {#  #}
+      outline: none; {#  #}
   }
 
   .button {
-    color: #000; {#  #}
-    white-space: nowrap; {#  #}
-    justify-content: center; {#  #}
-    align-items: center; {#  #}
-    border-radius: 12px; {#  #}
-    background-color: rgba(255, 168, 0, 1); {#  #}
-    align-self: stretch; {#  #}
-    margin-top: 100px; {#  #}
-    padding: 20px 60px; {#  #}
-    font: 400 18px SF Compact Display, -apple-system, Roboto, Helvetica, sans-serif; {#  #}
+
+      color: #000; {#  #}
+      white-space: nowrap; {#  #}
+      justify-content: center; {#  #}
+      align-items: center; {#  #}
+      border-radius: 10px; {#  #}
+      background-color: rgba(255, 168, 0, 1); {#  #}
+      align-self: stretch; {#  #}
+      margin: 5% 20% 0%;
+      padding: 20px 60px; {#  #}
+      font: 400 18px SF Compact Display, -apple-system, Roboto, Helvetica, sans-serif; {#  #}
   }
 
-  @media (max-width: 991px) {
+  @media (max-width: 900px) {
     .button {
-      white-space: initial; {#  #}
-      margin-top: 40px; {#  #}
+      white-space: normal; {#  #}
+      margin: 5% 30% 0%;
       padding: 0 20px; {#  #}
     }
   }
