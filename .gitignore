@@ -13,7 +13,7 @@ poetry/
 db.sqlite3
 
 # Static folder at project root
-
+.0001_initial.py
 # macOS
 ._*
 .DS_Store
