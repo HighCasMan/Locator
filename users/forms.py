@@ -7,7 +7,6 @@ User = get_user_model()
 
 
 class UserRegisterForm(UserCreationForm):
-
     username = forms.CharField(widget=forms.TextInput(attrs={"class": "input-wrapper",
                                                              "type": "text",
                                                              "placeholder": "enter username"}))
@@ -31,11 +30,10 @@ class UserRegisterForm(UserCreationForm):
 
 
 class UserAuthenticationForm(AuthenticationForm):
-
-    email = forms.EmailField(label=_("Email"),
-                             max_length=254,
-                             widget=forms.EmailInput(attrs={"class": "input-wrapper",
-                                                            "placeholder": "enter email"}))
+    username = forms.EmailField(label=_("Email"),
+                                max_length=254,
+                                widget=forms.EmailInput(attrs={"class": "input-wrapper",
+                                                               "placeholder": "enter email"}))
 
     password = forms.CharField(widget=forms.TextInput(attrs={"class": "input-wrapper",
                                                              "type": "text",

@@ -36,6 +36,10 @@ LOGOUT_REDIRECT_URL = '/'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'users.auth.EmailAuthBackend'
+]
 # Application definition
 
 INSTALLED_APPS = [

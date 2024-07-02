@@ -1,5 +1,5 @@
 from django.contrib.auth import authenticate, login
-from django.contrib.auth.views import LogoutView
+from django.contrib.auth.views import LogoutView, LoginView
 from django.http import HttpResponse
 from django.urls import reverse_lazy
 from django.views import View
@@ -32,36 +32,9 @@ class Register(View):
         return render(request, self.template_name, context)
 
 
-class Login(View):
+class Login(LoginView):
     template_name = 'registration/login.html'
-
-    def get(self, request):
-        context = {
-            'form': UserAuthenticationForm()
-        }
-        return render(request, self.template_name, context)
-
-    def post(self, request):
-        form = UserAuthenticationForm(request.POST)
-
-        if form.is_valid():
-            email = request.POST.get('email')
-            password = request.POST.get('password')
-            user = authenticate(email=email, password=password)
-            if user is not None:
-                if user.is_active:
-                    login(request, user)
-                    return redirect('')
-                else:
-                    return HttpResponse('Disabled account')
-        context = {
-            'form': form
-        }
-        return render(request, self.template_name, context)
-
-    # @staticmethod
-    # def get_success_url():
-    #     return reverse_lazy('home')
+    form_class = UserAuthenticationForm
 
 
 class Logout(LogoutView):

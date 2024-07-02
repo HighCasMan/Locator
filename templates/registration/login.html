@@ -18,7 +18,7 @@
                     {% endif %}
                     <form action="{% url 'login' %}" method="post">
 {#                        <div class="row-form-errors">{{ form.non_field_errors }}</div>#}
-                        <div>{{ form.email }}</div>
+                        <div>{{ form.username }}</div>
                         <div>{{ form.password }}</div>
                         {% csrf_token %}
                         <button type="submit" class="button">Join</button>
