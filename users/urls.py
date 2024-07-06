@@ -1,6 +1,6 @@
 from django.urls import path, include
 from users.views import Register, Login, PasswordChange, PasswordChangeDone, PasswordReset, PasswordResetDone, Logout, \
-    Profile
+    Profile, ProfileChange
 
 urlpatterns = [
     # path('', include('django.contrib.auth.urls')),
@@ -12,4 +12,5 @@ urlpatterns = [
     path("password_reset/done/", PasswordResetDone.as_view(), name="password_reset_done"),
     path(" ", Logout.as_view(), name="logout"),
     path("profile/", Profile.as_view(), name="profile"),
+    path("profile_change/", ProfileChange.as_view(), name="profile"),
 ]

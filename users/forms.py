@@ -46,3 +46,10 @@ class UserAuthenticationForm(AuthenticationForm):
 
 class PasswordReset(AuthenticationForm):
     pass
+
+
+# class Profile():
+#     class Meta():
+#         model =
+#         fields = ['', '', '']
+#     pass

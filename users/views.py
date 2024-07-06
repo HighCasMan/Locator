@@ -3,8 +3,11 @@ from django.contrib.auth.views import LogoutView, LoginView
 from django.http import HttpResponse
 from django.urls import reverse_lazy
 from django.views import View
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from users.forms import UserRegisterForm, UserAuthenticationForm, PasswordReset
+from django.views.generic.detail import DetailView
+from users.models import Profile
+from django.views.generic.edit import CreateView
 
 
 class Register(View):
@@ -41,8 +44,39 @@ class Logout(LogoutView):
     template_name = "registration/logout.html"
 
 
-class Profile(View):
-    template_name = "registration/profile.html"
+class CreateProfilePageView(CreateView):
+    model = Profile
+
+    template_name = 'base/create_profile.html'
+    fields = ['profile_pic', 'bio', 'facebook', 'twitter', 'instagram']
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
+    success_url = reverse_lazy('tasks')
+
+
+class Profile(DetailView):
+    model = Profile
+    template_name = "account/profile.html"
+
+    def get_context_data(self, *args, **kwargs):
+        users = Profile.objects.all()
+        context = super(Profile, self).get_context_data(*args, **kwargs)
+        page_user = get_object_or_404(Profile, id=self.kwargs['pk'])
+        context['page_user'] = page_user
+        return context
+
+    def get(self, request):
+        context = {
+            'form': UserRegisterForm()
+        }
+        return render(request, self.template_name, context)
+
+
+class ProfileChange(DetailView):
+    pass
 
 
 class PasswordReset(View):
