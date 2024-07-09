@@ -9,6 +9,9 @@ readme = "README.md"
 python = "^3.9"
 django = "^4.2.3"
 pillow = "^10.4.0"
+selenium = "^4.22.0"
+pytest = "^8.2.2"
+chromedriver = "^2.24.1"
 
 
 [build-system]
