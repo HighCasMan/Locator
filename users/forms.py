@@ -44,12 +44,17 @@ class UserAuthenticationForm(AuthenticationForm):
         fields = ['email', 'password']
 
 
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = [
+            'email', 'username', 'bio',
+            'profile_pic', 'facebook',
+            'twitter', 'instagram'
+        ]
+
+
 class PasswordReset(AuthenticationForm):
     pass
 
 
-# class Profile():
-#     class Meta():
-#         model =
-#         fields = ['', '', '']
-#     pass

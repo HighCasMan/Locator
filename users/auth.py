@@ -12,5 +12,5 @@ class EmailAuthBackend(BaseBackend):
                 return user
             else:
                 return None
-        except User.DoesNotExist:
+        except User.DoesNotExist:       #?
             return None

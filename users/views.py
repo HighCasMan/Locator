@@ -1,13 +1,13 @@
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.views import LogoutView, LoginView
 from django.http import HttpResponse
-from django.urls import reverse_lazy
+from django.urls import reverse
 from django.views import View
 from django.shortcuts import render, redirect, get_object_or_404
-from users.forms import UserRegisterForm, UserAuthenticationForm, PasswordReset
+from users.forms import UserRegisterForm, UserAuthenticationForm, PasswordReset, ProfileForm
 from django.views.generic.detail import DetailView
-from users.models import Profile
-from django.views.generic.edit import CreateView
+from users.models import User
+from django.views.generic.edit import UpdateView
 
 
 class Register(View):
@@ -44,42 +44,22 @@ class Logout(LogoutView):
     template_name = "registration/logout.html"
 
 
-class CreateProfilePageView(CreateView):
-    model = Profile
-
-    template_name = 'base/create_profile.html'
-    fields = ['profile_pic', 'bio', 'facebook', 'twitter', 'instagram']
-
-    def form_valid(self, form):
-        form.instance.user = self.request.user
-        return super().form_valid(form)
-
-    success_url = reverse_lazy('tasks')
-
-
-class Profile(DetailView):
-    model = Profile
+class ProfileView(DetailView):
+    model = User
     template_name = "account/profile.html"
-
-    def get_context_data(self, *args, **kwargs):
-        users = Profile.objects.all()
-        context = super(Profile, self).get_context_data(*args, **kwargs)
-        page_user = get_object_or_404(Profile, id=self.kwargs['pk'])
-        context['page_user'] = page_user
-        return context
-
-    def get(self, request):
-        context = {
-            'form': UserRegisterForm()
-        }
-        return render(request, self.template_name, context)
+    context_object_name = "profile"
 
 
-class ProfileChange(DetailView):
-    pass
+class ProfileChangeView(UpdateView):
+    form_class = ProfileForm
+    model = User
+    template_name = 'account/profile_change.html'
+
+    def get_success_url(self, **kwargs):
+        return reverse("profile", kwargs={'pk': self.object.pk})
 
 
-class PasswordReset(View):
+class PasswordResetView(View):
     email_template_name = "registration/password_reset_email.html"
     form_class = PasswordReset
     success_url = "password_reset_done"

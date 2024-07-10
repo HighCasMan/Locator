@@ -6,5 +6,11 @@
 </head>
 <body>
 получает поля с персональными данными внутри и сохраняет их содержимое после изменений на кнопку сохранить изменения
+<form method="post">
+   {% csrf_token %}
+   {{ form }}
+   <button type="submit" value="update" class="button">Отправить</button>
+</form>
+
 </body>
 </html>
