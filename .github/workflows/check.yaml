@@ -4,6 +4,10 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+      - name: setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
       - name: Checkout repository
         uses: actions/checkout@v4
       - name: setup Python
