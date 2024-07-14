@@ -1,6 +1,7 @@
 from django.urls import path, include
-from users.views import Register, Login, PasswordChange, PasswordChangeDone, PasswordResetView, PasswordResetDone, Logout, \
-    ProfileView, ProfileChangeView
+from users.views import Register, Login, PasswordChange, PasswordChangeDone, PasswordResetView, PasswordResetDone, \
+    Logout, \
+    ProfileView, ProfileChangeView, CreateLocationsView
 
 urlpatterns = [
     # path('', include('django.contrib.auth.urls')),
@@ -13,4 +14,6 @@ urlpatterns = [
     path(" ", Logout.as_view(), name="logout"),
     path("profile/<int:pk>", ProfileView.as_view(), name="profile"),
     path("profile_change/<int:pk>", ProfileChangeView.as_view(), name="profile_change"),
+    # path("start_page/", LocationsView.as_view(), name="start_page"),
+    path("create_location/", CreateLocationsView.as_view(), name="create_location"),
 ]

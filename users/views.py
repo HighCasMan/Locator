@@ -4,10 +4,12 @@ from django.http import HttpResponse
 from django.urls import reverse
 from django.views import View
 from django.shortcuts import render, redirect, get_object_or_404
+from django.views.generic import ListView
+
 from users.forms import UserRegisterForm, UserAuthenticationForm, PasswordReset, ProfileForm
 from django.views.generic.detail import DetailView
-from users.models import User
-from django.views.generic.edit import UpdateView
+from users.models import User, Post
+from django.views.generic.edit import UpdateView, CreateView
 
 
 class Register(View):
@@ -80,3 +82,17 @@ class PasswordChange(View):
 
 class PasswordChangeDone(View):
     template_name = 'registration/password_change_Done.html'
+
+
+class CreateLocationsView(CreateView):
+    model = Post
+    template_name = "catalog/create_location.html"
+    fields = '__all__'
+
+# class LocationsView(ListView):
+#     model = Post
+#     template_name = "catalog/start_page.html"
+#
+    # def get(self, request):
+    #     context = {"111"}
+    #     return render(request, self.template_name, context)

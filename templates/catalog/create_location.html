@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create locations here!</title>
+</head>
+<body>
+Create!!!
+<form action="{% url 'create_location' %}" method="get">
+          <div>{{ form.user }}</div>
+        <div>{{ form.photo }}</div>
+        <div>{{ form.description }}</div>
+        <div><button type="submit" class="button">Create</button></div>
+    </form>
+</body>
+</html>

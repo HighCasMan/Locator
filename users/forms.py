@@ -3,6 +3,8 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django import forms
 from django.utils.translation import gettext_lazy as _
 
+from users.models import Post
+
 User = get_user_model()
 
 
@@ -58,3 +60,11 @@ class PasswordReset(AuthenticationForm):
     pass
 
 
+# class CreateLocationsForm(forms.ModelForm):
+#     description = forms.CharField(label=_("Description"), max_length=254, )
+#     photo = forms.ImageField
+#     user = forms.CharField(label=_("User"), max_length=254, )
+#
+#     class Meta:
+#         model = Post
+#         fields = ['description', 'photo', 'user']
