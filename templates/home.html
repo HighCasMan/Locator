@@ -15,9 +15,9 @@
         <br>
         <br>
         {% for post in object_list %}
-            {{ post.photo }}
-            {{ post.user }}
-            {{ post.description }}
+            <img src="{{ post.photo }}" width="200" height="150"/>
+            опубликовал: {{ post.user.username }}
+            описание: {{ post.description }}
             <br><br>
         {% endfor %}
     {% else %}

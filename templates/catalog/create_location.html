@@ -6,6 +6,7 @@
 </head>
 <body>
 Create!!!
+{% if user.is_authenticated %}
 <form method="post">
     <div>{{ form.user }}</div>
     <div>{{ form.photo }}</div>
@@ -13,5 +14,8 @@ Create!!!
     {% csrf_token %}
     <div><button type="submit" class="button">Create</button></div>
     </form>
+{% else %}
+    SOSI
+{% endif %}
 </body>
 </html>
