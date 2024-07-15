@@ -15,15 +15,28 @@
 пароль
 юзернейм
 <h2>Данные {{ profile.username }}</h2>
-<h5>
+<h3>
     о себе: {{ profile.bio }}<br>
     профиль facebook: {{ profile.facebook }}<br>
     профиль twitter: {{ profile.twitter }}<br>
     профиль instagram: {{ profile.instagram }}<br>
-</h5>
-
+</h3>
+<br>
+<a href="{% url 'create_location' %}">create_location</a>
+<br>
+<h3>
+    список моих публикаций:
+</h3>
+{% for post in profile.post_set.all %}
+    <div>
+        <img src="{{ post.photo }}" width="200" height="150"/>
+        {{ post.description }}
+    </div>
+{% endfor %}
+<br>
 <a href="{% url 'profile_change' profile.id %}">change profile</a>
-
+<br>
+<a href="/">back</a>
 
 </body>
 

@@ -3,10 +3,10 @@ from django.contrib.auth.views import LogoutView, LoginView
 from django.http import HttpResponse
 from django.urls import reverse
 from django.views import View
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 from django.views.generic import ListView
 
-from users.forms import UserRegisterForm, UserAuthenticationForm, PasswordReset, ProfileForm
+from users.forms import UserRegisterForm, UserAuthenticationForm, PasswordReset, ProfileForm, CreateLocationsForm
 from django.views.generic.detail import DetailView
 from users.models import User, Post
 from django.views.generic.edit import UpdateView, CreateView
@@ -43,7 +43,7 @@ class Login(LoginView):
 
 
 class Logout(LogoutView):
-    template_name = "registration/logout.html"
+    pass
 
 
 class ProfileView(DetailView):
@@ -87,12 +87,17 @@ class PasswordChangeDone(View):
 class CreateLocationsView(CreateView):
     model = Post
     template_name = "catalog/create_location.html"
-    fields = '__all__'
+    form_class = CreateLocationsForm
 
-# class LocationsView(ListView):
-#     model = Post
-#     template_name = "catalog/start_page.html"
-#
-    # def get(self, request):
-    #     context = {"111"}
-    #     return render(request, self.template_name, context)
+    def form_valid(self, form):
+        self.success_url = reverse('profile', args=[self.request.user.id])
+
+        fields = form.save(commit=False)
+        fields.user = User.objects.get(id=self.request.user.id)
+        fields.save()
+        return super().form_valid(form)
+
+
+class LocationsView(ListView):
+    model = Post
+    template_name = "home.html"

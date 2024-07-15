@@ -15,6 +15,6 @@ class User(AbstractUser):
 
 
 class Post(models.Model):
-    description = models.TextField(null=True, blank=True, default='не указан')
-    photo = models.ImageField(null=True, blank=True, default='не указан')
+    description = models.TextField(null=True, blank=True)
+    photo = models.FileField(upload_to='location_images', null=True, blank=True)
     user = models.ForeignKey(User, on_delete=models.PROTECT, null=True)

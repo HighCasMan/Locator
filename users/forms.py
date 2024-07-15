@@ -60,11 +60,10 @@ class PasswordReset(AuthenticationForm):
     pass
 
 
-# class CreateLocationsForm(forms.ModelForm):
-#     description = forms.CharField(label=_("Description"), max_length=254, )
-#     photo = forms.ImageField
-#     user = forms.CharField(label=_("User"), max_length=254, )
-#
-#     class Meta:
-#         model = Post
-#         fields = ['description', 'photo', 'user']
+class CreateLocationsForm(forms.ModelForm):
+    description = forms.CharField(label=_("Description"), max_length=254, )
+    photo = forms.FileField
+
+    class Meta:
+        model = Post
+        fields = ['description', 'photo']
