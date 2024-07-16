@@ -15,7 +15,8 @@ Create!!!
     <div><button type="submit" class="button">Create</button></div>
     </form>
 {% else %}
-    SOSI
+    <a href="{% url 'login' %}">Login</a> |
+    <a href="{% url 'register' %}">Register</a>
 {% endif %}
 </body>
 </html>

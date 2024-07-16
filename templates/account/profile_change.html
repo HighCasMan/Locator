@@ -5,12 +5,16 @@
     <title>Title</title>
 </head>
 <body>
-получает поля с персональными данными внутри и сохраняет их содержимое после изменений на кнопку сохранить изменения
+{% if user.is_authenticated %}
 <form method="post">
    {% csrf_token %}
    {{ form.as_p }}
    <button type="submit" value="update" class="button">Save changes</button>
 </form>
+{% else %}
+    <a href="{% url 'login' %}">Login</a> |
+    <a href="{% url 'register' %}">Register</a>
+{% endif %}
 
 </body>
 </html>

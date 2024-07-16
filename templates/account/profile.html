@@ -6,20 +6,14 @@
     <h1>My Collection</h1>
 </head>
 <body>
-12345
-Должен выводить список публикаций и иметь ссылку на страницу изменения личных данных
-кнопка изменить личные данные => переход на change_profile.html
-фио
-год рождения
-имейл
-пароль
-юзернейм
-<h2>Данные {{ profile.username }}</h2>
+
+{% if user.is_authenticated %}
+<h2>Данные {{ user.username }}</h2>
 <h3>
-    о себе: {{ profile.bio }}<br>
-    профиль facebook: {{ profile.facebook }}<br>
-    профиль twitter: {{ profile.twitter }}<br>
-    профиль instagram: {{ profile.instagram }}<br>
+    о себе: {{ user.bio }}<br>
+    профиль facebook: {{ user.facebook }}<br>
+    профиль twitter: {{ user.twitter }}<br>
+    профиль instagram: {{ user.instagram }}<br>
 </h3>
 <br>
 <a href="{% url 'create_location' %}">create_location</a>
@@ -27,16 +21,20 @@
 <h3>
     список моих публикаций:
 </h3>
-{% for post in profile.post_set.all %}
+{% for post in user.post_set.all %}
     <div>
         <img src="{{ post.photo }}" width="200" height="150"/>
         {{ post.description }}
     </div>
 {% endfor %}
 <br>
-<a href="{% url 'profile_change' profile.id %}">change profile</a>
+<a href="{% url 'profile_change' %}">change profile</a>
 <br>
 <a href="/">back</a>
+{% else %}
+    <a href="{% url 'login' %}">Login</a> |
+    <a href="{% url 'register' %}">Register</a>
+{% endif %}
 
 </body>
 

@@ -7,7 +7,7 @@ from django.shortcuts import render, redirect
 from django.views.generic import ListView
 
 from users.forms import UserRegisterForm, UserAuthenticationForm, PasswordReset, ProfileForm, CreateLocationsForm
-from django.views.generic.detail import DetailView
+from django.views.generic.base import TemplateView
 from users.models import User, Post
 from django.views.generic.edit import UpdateView, CreateView
 
@@ -46,19 +46,30 @@ class Logout(LogoutView):
     pass
 
 
-class ProfileView(DetailView):
-    model = User
+class ProfileView(TemplateView):
     template_name = "account/profile.html"
-    context_object_name = "profile"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        try:
+            context['user'] = User.objects.get(id=self.request.user.id)
+            return context
+        except:
+            pass
 
 
 class ProfileChangeView(UpdateView):
     form_class = ProfileForm
     model = User
     template_name = 'account/profile_change.html'
+    success_url = '/users/profile/'
 
-    def get_success_url(self, **kwargs):
-        return reverse("profile", kwargs={'pk': self.object.pk})
+    def get_object(self, queryset=None):
+        try:
+            obj = User.objects.get(id=self.request.user.id)
+            return obj
+        except:
+            pass
 
 
 class PasswordResetView(View):
@@ -88,10 +99,9 @@ class CreateLocationsView(CreateView):
     model = Post
     template_name = "catalog/create_location.html"
     form_class = CreateLocationsForm
+    success_url = '/users/profile/'
 
     def form_valid(self, form):
-        self.success_url = reverse('profile', args=[self.request.user.id])
-
         fields = form.save(commit=False)
         fields.user = User.objects.get(id=self.request.user.id)
         fields.save()
