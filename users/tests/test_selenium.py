@@ -1,11 +1,14 @@
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 import pytest
 
 
 @pytest.fixture()
 def test_browser():
-    chrome_browser = webdriver.Chrome()
+    options = Options()
+    options.add_argument('--no-sandbox')
+    chrome_browser = webdriver.Chrome(options=options)
     return chrome_browser
 
 
@@ -15,7 +18,7 @@ def test_registration(test_browser):
     password1 = "AutoTest123."
     password2 = password1
 
-    register_url = 'http://127.0.0.1:8000/users/register'
+    register_url = 'http://127.0.0.1:8080/users/register'
     test_browser.get(register_url)
 
     email_field = test_browser.find_element(By.ID, value="id_email")
