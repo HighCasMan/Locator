@@ -9,6 +9,10 @@ def test_browser():
     return chrome_browser
 
 
+def test_pass():
+    pass
+
+
 # def test_registration(test_browser):
 #     email = "AutoTest@gmail.com"
 #     username = "AutoTest"
