@@ -19,7 +19,7 @@ def test_registration(test_browser):
     password1 = "AutoTest123."
     password2 = password1
 
-    test_browser.get('127.0.0.1:8080/users/register')
+    test_browser.get('127.0.0.1:8080/users/register/')
 
     email_field = test_browser.find_element(By.ID, value="id_email")
     username_field = test_browser.find_element(By.ID, value="id_username")
