@@ -2,13 +2,13 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 import pytest
-
+# поднять сервак на виртуалке -> запустить браузер хром -> перейти на регистрацию и запустить тесты -> закрыть процесс
 
 @pytest.fixture()
 def test_browser():
     options = Options()
-    options.add_argument("--headless")
-    options.add_argument('--no-sandbox')
+    # options.add_argument("--headless")
+    # options.add_argument('--no-sandbox')
     chrome_browser = webdriver.Chrome(options=options)
     return chrome_browser
 
