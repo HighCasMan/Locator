@@ -19,6 +19,6 @@ jobs:
       - name: install dependencies
         run: pip3 install -r requirements.txt
       - name: Run Locator
-        run: python manage.py runserver localhost:8080
+        run: python manage.py runserver 127.0.0.1:8080
       - name: Run tests
         run: pytest
