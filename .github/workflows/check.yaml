@@ -18,7 +18,10 @@ jobs:
         run: sudo apt-get install google-chrome-stable
       - name: install dependencies
         run: pip3 install -r requirements.txt
+      - name: Run migrations
+        run: python3 Locator/manage.py migrate
       - name: Run Locator
-        run: python manage.py runserver 127.0.0.1:8080
+        run: cd Locator
+             python3 manage.py runserver 127.0.0.1:8080
       - name: Run tests
         run: pytest
