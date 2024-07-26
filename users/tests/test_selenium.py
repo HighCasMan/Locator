@@ -4,6 +4,7 @@ from selenium.webdriver.common.by import By
 import pytest
 # поднять сервак на виртуалке -> запустить браузер хром -> перейти на регистрацию и запустить тесты -> закрыть процесс
 
+
 @pytest.fixture()
 def test_browser():
     options = Options()
