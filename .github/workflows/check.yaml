@@ -1,7 +1,7 @@
 name: Auto tests
 on: push
 jobs:
-  test:
+  install-app:
     runs-on: ubuntu-latest
     steps:
       - name: setup Node.js 20
@@ -20,7 +20,11 @@ jobs:
         run: pip3 install -r requirements.txt
       - name: Run migrations
         run: python3 manage.py migrate
-      - name: Run Locator
-        run: python3 manage.py runserver 127.0.0.1:8080
-      - name: Run tests
-        run: pytest
+  run-app:
+    - needs: [install-app]
+      runs-on: ubuntu-latest
+      steps:
+        - name: Run Locator
+          run: python3 manage.py runserver 127.0.0.1:8080
+        - name: Run tests
+          run: pytest
