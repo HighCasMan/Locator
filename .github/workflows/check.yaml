@@ -21,7 +21,7 @@ jobs:
       - name: Run migrations
         run: python3 manage.py migrate
   run-app:
-    - needs: [install-app]
+      needs: [install-app]
       runs-on: ubuntu-latest
       steps:
         - name: Run Locator
