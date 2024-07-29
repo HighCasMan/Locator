@@ -23,6 +23,7 @@ jobs:
       - name: Run Locator
         run: python3 manage.py runserver 127.0.0.1:8080
   run-app:
+    needs: [install-app]
     runs-on: ubuntu-latest
     steps:
       - name: Run tests
