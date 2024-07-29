@@ -20,13 +20,7 @@ jobs:
         run: pip3 install -r requirements.txt
       - name: Run migrations
         run: python3 manage.py migrate
-  run-app:
-      needs: [install-app]
-      runs-on: ubuntu-latest
-      steps:
-        - name: Checkout repository
-          uses: actions/checkout@v4
-        - name: Run Locator
-          run: python3 manage.py runserver 127.0.0.1:8080
-        - name: Run tests
-          run: pytest
+      - name: Run Locator
+        run: python3 manage.py runserver 127.0.0.1:8080
+      - name: Run tests
+        run: pytest
