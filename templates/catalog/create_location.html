@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create locations here!</title>
+</head>
+<body>
+Create!!!
+{% if user.is_authenticated %}
+<form method="post">
+    <div>{{ form.user }}</div>
+    <div>{{ form.photo }}</div>
+    <div>{{ form.description }}</div>
+    {% csrf_token %}
+    <div><button type="submit" class="button">Create</button></div>
+    </form>
+{% else %}
+    <a href="{% url 'login' %}">Login</a> |
+    <a href="{% url 'register' %}">Register</a>
+{% endif %}
+</body>
+</html>

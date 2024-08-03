@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+    <h1>My Collection</h1>
+</head>
+<body>
+
+{% if user.is_authenticated %}
+<h2>Данные {{ user.username }}</h2>
+<h3>
+    о себе: {{ user.bio }}<br>
+    профиль facebook: {{ user.facebook }}<br>
+    профиль twitter: {{ user.twitter }}<br>
+    профиль instagram: {{ user.instagram }}<br>
+</h3>
+<br>
+<a href="{% url 'create_location' %}">create_location</a>
+<br>
+<h3>
+    список моих публикаций:
+</h3>
+{% for post in user.post_set.all %}
+    <div>
+        <img src="{{ post.photo }}" width="200" height="150"/>
+        {{ post.description }}
+    </div>
+{% endfor %}
+<br>
+<a href="{% url 'profile_change' %}">change profile</a>
+<br>
+<a href="/">back</a>
+{% else %}
+    <a href="{% url 'login' %}">Login</a> |
+    <a href="{% url 'register' %}">Register</a>
+{% endif %}
+
+</body>
+
+</html>
