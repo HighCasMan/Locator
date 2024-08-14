@@ -20,11 +20,11 @@ jobs:
         run: pip3 install -r requirements.txt
       - name: Run migrations
         run: python3 manage.py migrate
-      - name: Run Locator
-        run: python3 manage.py runserver 127.0.0.1:8080
-  run-app:
-    needs: [install-app]
-    runs-on: ubuntu-latest
-    steps:
+      - name: Run background process Locator
+        run: |
+          nohup python3 manage.py runserver 127.0.0.1:8080 &
       - name: Run tests
         run: pytest
+      - name: Stop background process Locator
+        run: |
+          pkill -f runserver
